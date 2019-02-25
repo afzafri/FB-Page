@@ -30,4 +30,38 @@ $(document).ready(function() {
     });
   }
 
+  function getPagesList() {
+    FB.api('/me/accounts', function(response) {
+      var pages = response.data;
+      var len = pages.length;
+      $("#noPages").append('You have <b>' + len + '</b> pages available.').hide().fadeIn('slow');
+
+      if(len > 0) {
+        $('#pageTable').fadeIn('slow');
+        for(var i=0;i<len;i++) {
+          var id = pages[i].id;
+          var name = pages[i].name;
+          var category = pages[i].category;
+          var tasks = "";
+          for(var j=0;j<pages[i].tasks.length;j++) {
+            tasks += "<li>"+pages[i].tasks[j]+"</li>";
+          }
+          var access_token = pages[i].access_token;
+
+          var pageData = "<tr>" +
+                            "<td>"+(i+1)+"</td>"+
+                            "<td>"+id+"</td>"+
+                            "<td>"+name+"</td>"+
+                            "<td>"+category+"</td>"+
+                            "<td><ul>"+tasks+"</ul></td>"+
+                            "<td><button id='getToken' acsTkn='"+access_token+"'>Copy Token</button></td>"+
+                            "<td><button id='manageBtn' pageID='"+id+"' acsTkn='"+access_token+"'>Manage</button></td>"+
+                         "<tr>";
+
+          $('#pageTable tbody').append(pageData).hide().fadeIn('slow');
+        }
+      }
+    });
+  }
+
 });
