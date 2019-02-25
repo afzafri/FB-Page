@@ -19,6 +19,17 @@ $(document).ready(function() {
     $(this).parent().html("<br><font color='lime'>Access Token copied</font>").hide().fadeIn('slow');
   });
 
+  $(document).on("click", "#manageBtn", function() {
+    var pageID = $(this).attr("pageID");
+    var access_token = $(this).attr("acsTkn");
+
+    $('#pageID').val(pageID);
+    $('#pageToken').val(access_token);
+
+    $('#pageLists').fadeOut('slow');
+    $('#newPost').fadeIn('slow');
+  });
+
   function fbLogin() {
     FB.login(function(response) {
         if (response.authResponse) {

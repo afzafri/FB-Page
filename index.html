@@ -10,23 +10,37 @@
 
     <div id="userInfo"></div><br>
 
-    <div id="noPages"></div><br>
+    <input type="hidden" id="pageID"/>
+    <input type="hidden" id="pageToken"/>
 
-    <table id="pageTable" style="display: none; border-collapse: collapse;" border="1px">
-      <thead>
-        <tr>
-          <th>#</th>
-          <th>Page ID</th>
-          <th>Name</th>
-          <th>Category</th>
-          <th>Task</th>
-          <th>Access Token</th>
-          <th>Manage Page</th>
-        </tr>
-      </thead>
-      <tbody>
-      </tbody>
-    </table>
+    <div id="newPost" style="display: none">
+      <textarea name="postMsg" id="postMsg" rows="8" cols="80">
+      </textarea><br>
+      <button type="button" id="postBtn">Post</button>
+      <br>
+    </div>
+
+    <div id="pageLists">
+
+      <div id="noPages"></div><br>
+      
+      <table id="pageTable" style="display: none; border-collapse: collapse;" border="1px">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Page ID</th>
+            <th>Name</th>
+            <th>Category</th>
+            <th>Task</th>
+            <th>Access Token</th>
+            <th>Manage Page</th>
+          </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+
+    </div>
 
     <script async defer src="https://connect.facebook.net/en_US/sdk.js"></script>
     <script type="text/javascript" src="./js/jquery-3.3.1.min.js"></script>
