@@ -13,6 +13,12 @@ $(document).ready(function() {
     fbLogin();
   });
 
+  $(document).on("click", "#getToken", function() {
+    var access_token = $(this).attr("acsTkn");
+    copyToClipboard(access_token);
+    $(this).parent().html("<br><font color='lime'>Access Token copied</font>").hide().fadeIn('slow');
+  });
+
   function fbLogin() {
     FB.login(function(response) {
         if (response.authResponse) {
@@ -62,6 +68,15 @@ $(document).ready(function() {
         }
       }
     });
+  }
+
+  function copyToClipboard(text){
+      var dummy = document.createElement("input");
+      document.body.appendChild(dummy);
+      dummy.setAttribute('value', text);
+      dummy.select();
+      document.execCommand("copy");
+      document.body.removeChild(dummy);
   }
 
 });
