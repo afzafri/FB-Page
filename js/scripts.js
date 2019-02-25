@@ -24,4 +24,10 @@ $(document).ready(function() {
     }, {scope: ['manage_pages', 'publish_pages']});
   }
 
+  function getUser() {
+    FB.api('/me', function(response) {
+      $("#userInfo").append('Welcome! Good to see you, ' + response.name + '.').hide().fadeIn('slow');
+    });
+  }
+
 });
